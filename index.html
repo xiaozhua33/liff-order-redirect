@@ -1,17 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>注文フォームへ移動中...</title>
+  <title>葉香菜 - 注文ページへ移動中</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="葉香菜公式LINE注文フォームにリダイレクトしています。">
+  <link rel="icon" href="https://hacana.tokyo/favicon.ico">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .container {
+      padding: 2rem;
+    }
+    .brand {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #5b8c2a;
+    }
+    .message {
+      font-size: 1.1rem;
+    }
+  </style>
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
 <body>
-  <p>LINE認証中... 少々お待ちください。</p>
+  <div class="container">
+    <div class="brand">🍃 葉香菜 </div>
+    <div class="message">LINEで認証中です。注文ページへ自動的に移動します。<br>しばらくお待ちください...</div>
+  </div>
   <script>
-    // LIFF ID（正式に取得したもの）
     const liffId = "2007479763-vNjPzy0N";
-
-    // 跳转目标（目前只保留团体订单）
     const formUrl = "https://forms.gle/XJ6XdAtJbquWwXfF9";
 
     async function main() {
@@ -23,7 +52,6 @@
 
       const profile = await liff.getProfile();
       const userId = profile.userId;
-
       const redirectUrl = `${formUrl}?userId=${encodeURIComponent(userId)}`;
       window.location.href = redirectUrl;
     }
