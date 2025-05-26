@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>注文フォームへ移動中...</title>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+  <p>LINE認証中... 少々お待ちください。</p>
+  <script>
+    // ❗この LIFF ID はあとで差し替えます
+    const liffId = "TO_BE_FILLED";
+
+    // 跳转目标（目前只保留团体订单）
+    const formUrl = "https://forms.gle/XJ6XdAtJbquWwXfF9";
+
+    async function main() {
+      await liff.init({ liffId });
+      if (!liff.isLoggedIn()) {
+        liff.login();
+        return;
+      }
+
+      const profile = await liff.getProfile();
+      const userId = profile.userId;
+
+      const redirectUrl = `${formUrl}?userId=${encodeURIComponent(userId)}`;
+      window.location.href = redirectUrl;
+    }
+
+    main();
+  </script>
+</body>
+</html>
