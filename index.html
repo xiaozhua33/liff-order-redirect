@@ -41,7 +41,7 @@
   </div>
   <script>
     const liffId = "2007479763-vNjPzy0N";
-    const formUrl = "https://forms.gle/XJ6XdAtJbquWwXfF9";
+    const formUrl = "https://forms.gle/XJ6XdAtJbquWwXfF9"; // 你的 Google 表单短链
 
     async function main() {
       await liff.init({ liffId });
@@ -52,7 +52,9 @@
 
       const profile = await liff.getProfile();
       const userId = profile.userId;
-      const redirectUrl = `${formUrl}?userId=${encodeURIComponent(userId)}`;
+
+      // 将 userId 作为预填项传入 Google Form
+      const redirectUrl = `${formUrl}?entry.2136726489=${encodeURIComponent(userId)}`;
       window.location.href = redirectUrl;
     }
 
