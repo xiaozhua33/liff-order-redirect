@@ -36,12 +36,13 @@
 </head>
 <body>
   <div class="container">
-    <div class="brand">🍃 葉香菜 </div>
+    <div class="brand">🍃 葉香菜</div>
     <div class="message">LINEで認証中です。注文ページへ自動的に移動します。<br>しばらくお待ちください...</div>
   </div>
   <script>
-    const liffId = "2007479763-vNjPzy0N";
-    const formUrl = "https://forms.gle/XJ6XdAtJbquWwXfF9"; // 你的 Google 表单短链
+    const liffId = "2007479763-vNjPzy0N"; // 你的 LIFF ID
+    const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfh-S5bwKoI6HHwSi19FydfoCsIjU3iWiiInmyFkrbFJCMs9A/viewform";
+    const entryKey = "entry.1601433617"; // userId 字段编号
 
     async function main() {
       await liff.init({ liffId });
@@ -53,8 +54,7 @@
       const profile = await liff.getProfile();
       const userId = profile.userId;
 
-      // 将 userId 作为预填项传入 Google Form
-      const redirectUrl = `${formUrl}?entry.2136726489=${encodeURIComponent(userId)}`;
+      const redirectUrl = `${formUrl}?usp=pp_url&${entryKey}=${encodeURIComponent(userId)}`;
       window.location.href = redirectUrl;
     }
 
