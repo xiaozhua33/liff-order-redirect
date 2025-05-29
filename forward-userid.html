@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>注文フォームにリダイレクト中...</title>
+</head>
+<body>
+  <form id="userForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfh-S5bwKoI6HHwSi19FydfoCsIjU3iWiiInmyFkrbFJCMs9A/formResponse" method="POST">
+    <!-- userId を送信する hidden フィールド -->
+    <input type="hidden" name="entry.794201470" id="userIdField" value="">
+  </form>
+
+  <script>
+    // URLから userId を取得
+    const params = new URLSearchParams(window.location.search);
+    const userId = params.get("userId");
+
+    if (userId) {
+      // userId を hidden フィールドにセット
+      document.getElementById("userIdField").value = userId;
+
+      // 自動的にフォームを送信
+      document.getElementById("userForm").submit();
+    } else {
+      document.body.innerHTML = "<p style='color:red;'>userId が指定されていません。</p>";
+    }
+  </script>
+</body>
+</html>
