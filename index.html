@@ -54,7 +54,7 @@
       const profile = await liff.getProfile();
       const userId = profile.userId;
 
-      const redirectUrl = `${formUrl}?usp=pp_url&${entryKey}=${encodeURIComponent(userId)}`;
+      const redirectUrl = `https://xiaozhua33.github.io/liff-order-redirect/forward-userid.html?userId=${encodeURIComponent(userId)}`;
       window.location.href = redirectUrl;
     }
 
